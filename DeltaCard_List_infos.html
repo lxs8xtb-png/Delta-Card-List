@@ -1,0 +1,905 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeltaCard List</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #111827;
+    color: white;
+}
+
+nav {
+    background: #7e22ce;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 10px rgba(0,0,0,.4);
+}
+
+nav h1 {
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #fde047;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 25px;
+}
+
+header h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+/* ARTICLE EN VEDETTE SUR L'ACCUEIL */
+
+.article-accueil {
+    width: 90%;
+    max-width: 1200px;
+    margin: 15px auto 40px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 25px;
+    align-items: center;
+    background: linear-gradient(135deg, #1f2937, #312e81, #581c87);
+    border: 2px solid #a855f7;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(168,85,247,.3);
+}
+
+.article-accueil h2 {
+    color: #f3e8ff;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.15;
+    margin: 10px 0 15px;
+}
+
+.article-accueil p {
+    color: #e5e7eb;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.article-accueil .etiquette {
+    display: inline-block;
+    background: #7e22ce;
+    color: white;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.article-accueil .date {
+    color: #d8b4fe;
+    font-style: italic;
+}
+
+.article-accueil img {
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+    border: 2px solid #c084fc;
+    box-shadow: 0 8px 25px rgba(0,0,0,.5);
+}
+
+/* FILTRES */
+
+.filtres {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filtre {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #374151;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.filtre:hover {
+    background: #4b5563;
+}
+
+.filtre.actif {
+    background: #7e22ce;
+}
+
+/* CARTES */
+
+.collection {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    padding: 25px 0 55px;
+}
+
+.carte {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.carte-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.carte img {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.5);
+    transition: box-shadow .3s ease;
+}
+
+.carte:hover {
+    transform: scale(1.04);
+}
+
+.carte:hover img {
+    box-shadow: 0 15px 35px rgba(0,0,0,.8);
+}
+
+.carte.cachee {
+    display: none;
+}
+
+.case-obtenue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 13px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkbox-carte {
+    width: 18px;
+    height: 18px;
+    accent-color: #22c55e;
+    cursor: pointer;
+}
+
+.carte.obtenue img {
+    box-shadow: 0 0 0 3px #22c55e,
+                0 8px 25px rgba(34,197,94,.35);
+}
+
+/* SECTION SECRÈTE */
+
+.secret-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto 50px;
+    padding: 25px 20px 5px;
+    background: linear-gradient(135deg, #1e1b4b, #312e81, #581c87);
+    border: 2px solid #a855f7;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(168,85,247,.25);
+}
+
+.secret-titre {
+    text-align: center;
+    font-size: 32px;
+    color: #f5d0fe;
+    margin-bottom: 12px;
+}
+
+.secret-description {
+    text-align: center;
+    color: #ddd6fe;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.secret-badge {
+    display: table;
+    margin: 0 auto 15px;
+    padding: 7px 15px;
+    border-radius: 20px;
+    background: #7e22ce;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.secret-section .carte img {
+    border: 2px solid #c084fc;
+    box-shadow: 0 0 18px rgba(192,132,252,.35);
+}
+
+.secret-section .carte:hover img {
+    box-shadow: 0 0 30px rgba(232,121,249,.7);
+}
+
+.secret-section .case-obtenue {
+    color: #f5d0fe;
+}
+
+/* VISIONNEUSE ET ZOOM */
+
+.visionneuse {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none;
+}
+
+.visionneuse.active {
+    display: flex;
+}
+
+.visionneuse.dragging {
+    cursor: grabbing;
+}
+
+#grandeCarte {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(0,0,0,.8);
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+    transform-origin: center center;
+}
+
+.fermer {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    font-size: 40px;
+    color: white;
+    background: rgba(0,0,0,.5);
+    border: none;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.fermer:hover {
+    background: #7e22ce;
+}
+
+.controles {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 1002;
+}
+
+.controles button {
+    background: white;
+    color: #111827;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.controles button:hover {
+    background: #e9d5ff;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #030712;
+    color: #94a3b8;
+}
+
+/* VERSION MOBILE */
+
+@media (max-width: 700px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        justify-content: center;
+        gap: 13px;
+    }
+
+    nav h1 {
+        font-size: 22px;
+    }
+
+    header h2 {
+        font-size: 30px;
+    }
+
+    .article-accueil {
+        grid-template-columns: 1fr;
+        padding: 18px;
+        gap: 18px;
+    }
+
+    .article-accueil img {
+        grid-row: 1;
+    }
+
+    .article-accueil h2 {
+        font-size: 28px;
+    }
+
+    .collection {
+        grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+        gap: 22px;
+    }
+
+    .secret-section {
+        padding: 20px 12px 0;
+    }
+
+    .secret-titre {
+        font-size: 26px;
+    }
+
+    #grandeCarte {
+        max-width: 90vw;
+        max-height: 75vh;
+    }
+
+    .controles {
+        bottom: 15px;
+        gap: 6px;
+    }
+
+    .controles button {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU PRINCIPAL -->
+
+<nav>
+    <h1>DeltaCard List</h1>
+
+    <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#collection">Mes cartes</a></li>
+        <li><a href="#secret">🔮 Secrets</a></li>
+        <li><a href="#apropos">À propos</a></li>
+    </ul>
+</nav>
+
+<!-- ACCUEIL -->
+
+<header id="accueil">
+    <h2>🎴 Mes DeltaCards</h2>
+    <p>Bienvenue dans l'univers de mes DeltaCards !</p>
+</header>
+
+<!-- ARTICLE VISIBLE DÈS L'ARRIVÉE -->
+
+<section class="article-accueil" id="article-premiere-serie">
+
+    <div>
+        <span class="etiquette">
+            ✨ À LA UNE — PREMIÈRE SÉRIE
+        </span>
+
+        <h2>Le Début de la Première Série !</h2>
+
+        <p class="date">
+            Une nouvelle aventure commence !
+        </p>
+
+        <p>
+            Bienvenue dans la toute première série des DeltaCards !
+            Pour lancer cette collection, trois personnages sont à
+            l'honneur : Kris, Jevil et Ralsei.
+        </p>
+
+        <p>
+            Entre l'ambiance lumineuse de Kris, l'énergie mystérieuse
+            de Jevil et l'univers verdoyant de Ralsei, chaque carte
+            possède son propre style et ses propres capacités.
+        </p>
+
+        <p>
+            <strong>La collection ne fait que commencer !</strong>
+            De nouvelles cartes et des surprises ultra rares
+            pourraient bientôt arriver.
+        </p>
+    </div>
+
+    <img
+        src="premiere-serie.png"
+        alt="Kris, Jevil et Ralsei : la première série des DeltaCards"
+    >
+
+</section>
+
+<!-- FILTRES DE COLLECTION -->
+
+<div class="filtres">
+    <button class="filtre actif" data-filtre="toutes">Toutes</button>
+    <button class="filtre" data-filtre="obtenues">✓ Obtenues</button>
+    <button class="filtre" data-filtre="non-obtenues">✗ Non obtenues</button>
+</div>
+
+<!-- CARTES NORMALES -->
+
+<main id="collection">
+
+    <div class="collection">
+
+        <div class="carte" data-carte="delta1" data-obtenue="false">
+            <div class="carte-image">
+                <img src="Delta1.png" alt="Carte Delta 1">
+            </div>
+            <label class="case-obtenue">
+                <input type="checkbox" class="checkbox-carte">
+                <span>Obtenue</span>
+            </label>
+        </div>
+
+        <div class="carte" data-carte="delta2" data-obtenue="false">
+            <div class="carte-image">
+                <img src="Delta2.png" alt="Carte Delta 2">
+            </div>
+            <label class="case-obtenue">
+                <input type="checkbox" class="checkbox-carte">
+                <span>Obtenue</span>
+            </label>
+        </div>
+
+        <div class="carte" data-carte="delta3" data-obtenue="false">
+            <div class="carte-image">
+                <img src="Delta3.png" alt="Carte Delta 3">
+            </div>
+            <label class="case-obtenue">
+                <input type="checkbox" class="checkbox-carte">
+                <span>Obtenue</span>
+            </label>
+        </div>
+
+        <div class="carte" data-carte="delta4" data-obtenue="false">
+            <div class="carte-image">
+                <img src="Delta4.png" alt="Carte Delta 4">
+            </div>
+            <label class="case-obtenue">
+                <input type="checkbox" class="checkbox-carte">
+                <span>Obtenue</span>
+            </label>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- CARTES SECRÈTES -->
+
+<section class="secret-section" id="secret">
+
+    <h2 class="secret-titre">🔮 Cartes secrètes</h2>
+
+    <p class="secret-description">
+        Des cartes légendaires, cachées aux yeux de tous...<br>
+        Seuls les vrais collectionneurs les connaissent !
+    </p>
+
+    <span class="secret-badge">
+        ★ COLLECTION ULTRA RARE ★
+    </span>
+
+    <div class="collection">
+
+        <div class="carte" data-carte="secret1" data-obtenue="false">
+            <div class="carte-image">
+                <img src="Secret1.png" alt="DeltaCard secrète 1">
+            </div>
+            <label class="case-obtenue">
+                <input type="checkbox" class="checkbox-carte">
+                <span>Obtenue</span>
+            </label>
+        </div>
+
+        <div class="carte" data-carte="secret2" data-obtenue="false">
+            <div class="carte-image">
+                <img src="Secret2.png" alt="DeltaCard secrète 2">
+            </div>
+            <label class="case-obtenue">
+                <input type="checkbox" class="checkbox-carte">
+                <span>Obtenue</span>
+            </label>
+        </div>
+
+        <div class="carte" data-carte="secret3" data-obtenue="false">
+            <div class="carte-image">
+                <img src="Secret3.png" alt="DeltaCard secrète 3">
+            </div>
+            <label class="case-obtenue">
+                <input type="checkbox" class="checkbox-carte">
+                <span>Obtenue</span>
+            </label>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- À PROPOS -->
+
+<section id="apropos">
+    <header>
+        <h2>À propos</h2>
+        <p>Juste des DeltaCards.</p>
+    </header>
+</section>
+
+<footer>
+    Les DeltaCards © 2026
+</footer>
+
+<!-- VISIONNEUSE DES CARTES -->
+
+<div class="visionneuse" id="visionneuse">
+
+    <button class="fermer" id="fermer" aria-label="Fermer la carte">×</button>
+
+    <img id="grandeCarte" src="" alt="Carte agrandie">
+
+    <div class="controles">
+        <button id="moins" aria-label="Dézoomer">−</button>
+        <button id="reset">Réinitialiser</button>
+        <button id="plus" aria-label="Zoomer">+</button>
+    </div>
+
+</div>
+
+<script>
+/* ===== VISIONNEUSE ===== */
+
+const visionneuse = document.getElementById("visionneuse");
+const grandeCarte = document.getElementById("grandeCarte");
+
+const boutonFermer = document.getElementById("fermer");
+const boutonPlus = document.getElementById("plus");
+const boutonMoins = document.getElementById("moins");
+const boutonReset = document.getElementById("reset");
+
+let zoom = 1;
+let x = 0;
+let y = 0;
+
+let enTrainDeDeplacer = false;
+let aBouge = false;
+
+let departX = 0;
+let departY = 0;
+let dernierX = 0;
+let dernierY = 0;
+
+function afficherCarte() {
+    grandeCarte.style.transform =
+        `translate(${x}px, ${y}px) scale(${zoom})`;
+}
+
+function ouvrirCarte(image) {
+    grandeCarte.src = image.src;
+    grandeCarte.alt = image.alt || "Carte agrandie";
+
+    zoom = 1;
+    x = 0;
+    y = 0;
+    aBouge = false;
+
+    afficherCarte();
+
+    visionneuse.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+document.querySelectorAll(".carte-image img").forEach(image => {
+    image.addEventListener("click", () => ouvrirCarte(image));
+});
+
+function fermerCarte() {
+    visionneuse.classList.remove("active", "dragging");
+    document.body.style.overflow = "";
+    enTrainDeDeplacer = false;
+    aBouge = false;
+}
+
+boutonFermer.addEventListener("click", fermerCarte);
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" &&
+        visionneuse.classList.contains("active")) {
+        fermerCarte();
+    }
+});
+
+/* Déplacer la carte avec la souris ou le doigt */
+
+visionneuse.addEventListener("pointerdown", event => {
+    if (event.target.closest("button")) return;
+
+    enTrainDeDeplacer = true;
+    aBouge = false;
+
+    departX = dernierX = event.clientX;
+    departY = dernierY = event.clientY;
+
+    visionneuse.classList.add("dragging");
+
+    try {
+        visionneuse.setPointerCapture(event.pointerId);
+    } catch (e) {}
+
+    event.preventDefault();
+});
+
+visionneuse.addEventListener("pointermove", event => {
+    if (!enTrainDeDeplacer) return;
+
+    const dx = event.clientX - dernierX;
+    const dy = event.clientY - dernierY;
+
+    if (
+        Math.abs(event.clientX - departX) > 3 ||
+        Math.abs(event.clientY - departY) > 3
+    ) {
+        aBouge = true;
+    }
+
+    x += dx;
+    y += dy;
+
+    dernierX = event.clientX;
+    dernierY = event.clientY;
+
+    afficherCarte();
+});
+
+function terminerDeplacement(event) {
+    if (!enTrainDeDeplacer) return;
+
+    enTrainDeDeplacer = false;
+    visionneuse.classList.remove("dragging");
+
+    try {
+        if (visionneuse.hasPointerCapture(event.pointerId)) {
+            visionneuse.releasePointerCapture(event.pointerId);
+        }
+    } catch (e) {}
+}
+
+visionneuse.addEventListener("pointerup", terminerDeplacement);
+visionneuse.addEventListener("pointercancel", terminerDeplacement);
+
+visionneuse.addEventListener("click", event => {
+    if (event.target !== visionneuse) return;
+
+    if (aBouge) {
+        aBouge = false;
+        return;
+    }
+
+    fermerCarte();
+});
+
+/* Zoom + et - */
+
+boutonPlus.addEventListener("click", event => {
+    event.stopPropagation();
+    zoom = Math.min(5, zoom + 0.25);
+    afficherCarte();
+});
+
+boutonMoins.addEventListener("click", event => {
+    event.stopPropagation();
+    zoom = Math.max(0.5, zoom - 0.25);
+    afficherCarte();
+});
+
+boutonReset.addEventListener("click", event => {
+    event.stopPropagation();
+    zoom = 1;
+    x = 0;
+    y = 0;
+    afficherCarte();
+});
+
+/* Zoom avec la molette */
+
+visionneuse.addEventListener("wheel", event => {
+    event.preventDefault();
+
+    if (event.deltaY < 0) {
+        zoom = Math.min(5, zoom + 0.1);
+    } else {
+        zoom = Math.max(0.5, zoom - 0.1);
+    }
+
+    afficherCarte();
+}, { passive: false });
+
+
+/* ===== FILTRES ET SAUVEGARDE ===== */
+
+const cartes = document.querySelectorAll(".carte");
+const boutonsFiltres = document.querySelectorAll(".filtre");
+
+let filtreActuel = "toutes";
+
+function chargerCollection() {
+    let sauvegarde = {};
+
+    try {
+        sauvegarde = JSON.parse(
+            localStorage.getItem("deltacards-obtenues") || "{}"
+        ) || {};
+    } catch (e) {
+        sauvegarde = {};
+    }
+
+    cartes.forEach(carte => {
+        const checkbox = carte.querySelector(".checkbox-carte");
+        const obtenue = sauvegarde[carte.dataset.carte] === true;
+
+        checkbox.checked = obtenue;
+        carte.dataset.obtenue = String(obtenue);
+        carte.classList.toggle("obtenue", obtenue);
+    });
+}
+
+function sauvegarderCollection() {
+    const sauvegarde = {};
+
+    cartes.forEach(carte => {
+        sauvegarde[carte.dataset.carte] =
+            carte.querySelector(".checkbox-carte").checked;
+    });
+
+    try {
+        localStorage.setItem(
+            "deltacards-obtenues",
+            JSON.stringify(sauvegarde)
+        );
+    } catch (e) {
+        console.warn("La sauvegarde locale est indisponible.");
+    }
+}
+
+function appliquerFiltre(filtre) {
+    cartes.forEach(carte => {
+        const obtenue = carte.dataset.obtenue === "true";
+
+        const afficher =
+            filtre === "toutes" ||
+            (filtre === "obtenues" && obtenue) ||
+            (filtre === "non-obtenues" && !obtenue);
+
+        carte.classList.toggle("cachee", !afficher);
+    });
+}
+
+document.querySelectorAll(".checkbox-carte").forEach(checkbox => {
+    checkbox.addEventListener("change", function() {
+        const carte = this.closest(".carte");
+
+        carte.dataset.obtenue = String(this.checked);
+        carte.classList.toggle("obtenue", this.checked);
+
+        sauvegarderCollection();
+        appliquerFiltre(filtreActuel);
+    });
+});
+
+/* Cocher une carte ne doit pas ouvrir la visionneuse */
+
+document.querySelectorAll(".case-obtenue").forEach(label => {
+    label.addEventListener("click", event => {
+        event.stopPropagation();
+    });
+});
+
+/* Boutons des filtres */
+
+boutonsFiltres.forEach(bouton => {
+    bouton.addEventListener("click", function() {
+        boutonsFiltres.forEach(btn => btn.classList.remove("actif"));
+
+        this.classList.add("actif");
+        filtreActuel = this.dataset.filtre;
+
+        appliquerFiltre(filtreActuel);
+    });
+});
+
+/* Charger les cartes obtenues au démarrage */
+
+chargerCollection();
+appliquerFiltre("toutes");
+</script>
+
+</body>
+</html>

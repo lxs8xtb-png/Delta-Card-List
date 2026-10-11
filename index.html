@@ -2,830 +2,801 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DeltaCard List</title>
-  <link rel="icon" type="image/png" href="logo.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeltaCard List</title>
+<link rel="icon" type="image/png" href="logo.png">
 
-  <style>
-    :root {
-      --violet: #7e22ce;
-      --violet-clair: #a855f7;
-      --fond: #f7f2ff;
-      --texte: #28143d;
-      --blanc: #ffffff;
-    }
+<style>
+:root {
+  --fond: #0d0915;
+  --panneau: #181124;
+  --panneau2: #211631;
+  --violet: #a855f7;
+  --violet-clair: #d8b4fe;
+  --texte: #f5edff;
+  --secondaire: #c4b5d8;
+  --or: #e8bd52;
+}
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+* { box-sizing: border-box; scroll-behavior: smooth; }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--fond);
-      color: var(--texte);
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--texte);
+  background:
+    radial-gradient(ellipse at top, #30134b 0, transparent 45%),
+    var(--fond);
+}
 
-    /* MENU */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 15px 10px;
-      background: var(--violet);
-      box-shadow: 0 4px 12px #0002;
-    }
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px;
+  background: #120b1dee;
+  border-bottom: 1px solid #64358a;
+  backdrop-filter: blur(12px);
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10px 13px;
-      border-radius: 9px;
-      transition: background 0.2s, transform 0.2s;
-    }
+nav a {
+  color: var(--texte);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 13px;
+  border-radius: 9px;
+  transition: .2s;
+}
 
-    nav a:hover {
-      background: #ffffff30;
-      transform: translateY(-2px);
-    }
+nav a:hover {
+  background: #a855f733;
+  color: var(--violet-clair);
+}
 
-    /* CONTENU GÉNÉRAL */
-    header {
-      padding: 55px 20px 35px;
-      text-align: center;
-      color: white;
-      background: linear-gradient(135deg, #581c87, #7e22ce, #c084fc);
-    }
+header {
+  padding: 65px 20px 50px;
+  text-align: center;
+}
 
-    header h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 6vw, 3.5rem);
-    }
+header h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  color: white;
+  text-shadow: 0 0 25px #a855f7aa;
+}
 
-    header p {
-      margin: 0;
-      font-size: 1.1rem;
-    }
+header p {
+  color: var(--secondaire);
+  font-size: 1.1rem;
+}
 
-    main {
-      width: min(1100px, 94%);
-      margin: auto;
-    }
+main {
+  width: min(1150px, 92%);
+  margin: auto;
+}
 
-    section {
-      padding: 35px 0;
-      scroll-margin-top: 75px;
-    }
+section {
+  padding: 30px 0 45px;
+  scroll-margin-top: 80px;
+}
 
-    h2 {
-      margin-top: 0;
-      color: var(--violet);
-      font-size: 2rem;
-    }
+h2 {
+  font-size: 2rem;
+  color: var(--violet-clair);
+  text-shadow: 0 0 15px #a855f733;
+}
 
-    .intro {
-      line-height: 1.7;
-      color: #59456d;
-    }
+.intro, .description {
+  color: var(--secondaire);
+  line-height: 1.7;
+}
 
-    /* ARTICLE D'ACCUEIL */
-    .article {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      margin-top: 28px;
-      padding: 24px;
-      background: white;
-      border-radius: 18px;
-      box-shadow: 0 5px 20px #4c1d9512;
-      border: 1px solid #eadcfb;
-    }
+/* ARTICLE */
+.article {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 25px;
+  padding: 24px;
+  background: linear-gradient(135deg, #211631, #130d20);
+  border: 1px solid #60358a;
+  border-radius: 18px;
+  box-shadow: 0 0 25px #0005;
+}
 
-    .article-texte {
-      flex: 1;
-    }
+.article-texte { flex: 1; }
 
-    .article h3 {
-      color: var(--violet);
-      margin-top: 0;
-      font-size: 1.5rem;
-    }
+.article h3 {
+  margin-top: 0;
+  color: var(--violet-clair);
+  font-size: 1.5rem;
+}
 
-    .article p {
-      line-height: 1.7;
-    }
+.article p {
+  color: var(--secondaire);
+  line-height: 1.8;
+}
 
-    .article img {
-      width: min(300px, 40%);
-      max-height: 260px;
-      object-fit: contain;
-      border-radius: 12px;
-    }
+.article img {
+  width: min(300px, 40%);
+  max-height: 260px;
+  object-fit: contain;
+  border-radius: 12px;
+}
 
-    /* FILTRES */
-    .filtres {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
+/* FILTRES */
+.filtres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
 
-    .filtres button {
-      border: 2px solid var(--violet);
-      background: white;
-      color: var(--violet);
-      padding: 10px 16px;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+.filtres button {
+  padding: 10px 17px;
+  border: 1px solid #8144ad;
+  border-radius: 25px;
+  background: var(--panneau);
+  color: var(--texte);
+  cursor: pointer;
+  font-weight: bold;
+  transition: .2s;
+}
 
-    .filtres button:hover,
-    .filtres button.active {
-      background: var(--violet);
-      color: white;
-    }
+.filtres button:hover,
+.filtres button.active {
+  color: white;
+  background: #7e22ce;
+  box-shadow: 0 0 15px #a855f755;
+}
 
-    .compteur {
-      margin: 12px 0 20px;
-      color: #6b4b85;
-      font-weight: bold;
-    }
+.compteur {
+  color: var(--secondaire);
+  font-size: .95rem;
+}
 
-    /* CARTES */
-    .cartes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
-      gap: 22px;
-      align-items: start;
-    }
+/* GRILLE DES CARTES */
+.cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+  gap: 22px;
+  align-items: start;
+}
 
-    .carte {
-      overflow: hidden;
-      padding: 13px;
-      text-align: center;
-      background: white;
-      border: 1px solid #e7d8f8;
-      border-radius: 16px;
-      box-shadow: 0 5px 15px #4c1d9510;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+.carte {
+  min-width: 0;
+  padding: 13px;
+  text-align: center;
+  background: linear-gradient(145deg, #211631, #120d1c);
+  border: 1px solid #60358a;
+  border-radius: 16px;
+  box-shadow: 0 7px 20px #0004;
+  transition: transform .25s, box-shadow .25s;
+}
 
-    .carte:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 24px #4c1d9520;
-    }
+.carte:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 22px #a855f744;
+}
 
-    .carte img {
-      display: block;
-      width: 100%;
-      height: 245px;
-      object-fit: contain;
-      cursor: zoom-in;
-      border-radius: 10px;
-    }
+/* Cadre : carte entière, jamais étirée ni coupée */
+.cadre-image {
+  width: 100%;
+  height: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0710;
+  border: 1px solid #ffffff12;
+  border-radius: 10px;
+}
 
-    .carte h3 {
-      margin: 13px 0 8px;
-    }
+.cadre-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  user-select: none;
+  transition: filter .2s;
+}
 
-    .rare {
-      border: 2px solid #d4a017;
-      box-shadow: 0 4px 18px #d4a01720;
-    }
+.cadre-image img:hover {
+  filter: drop-shadow(0 0 7px #c084fc66);
+}
 
-    .secrete {
-      border: 2px solid #b34dff;
-      box-shadow: 0 4px 20px #b34dff25;
-    }
+.carte h3 { margin: 14px 0 9px; }
 
-    .etiquette {
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 20px;
-      background: #f0e4ff;
-      color: #6b21a8;
-      font-size: 0.8rem;
-      font-weight: bold;
-    }
+.badge {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 20px;
+  font-size: .75rem;
+  font-weight: bold;
+  letter-spacing: .7px;
+}
 
-    .rare .etiquette {
-      background: #fff0bf;
-      color: #805500;
-    }
+.badge-commune {
+  color: #ddd6fe;
+  background: #49315e;
+}
 
-    .secrete .etiquette {
-      background: #f3d9ff;
-      color: #8618b5;
-    }
+.badge-rare {
+  color: #ffe5a0;
+  background: #634714;
+  border: 1px solid #b8860b;
+}
 
-    .obtention {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 14px;
-      padding: 10px;
-      background: #f8f3ff;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.badge-secrete {
+  color: #f5d0fe;
+  background: #581c87;
+  border: 1px solid #c084fc;
+}
 
-    .obtention input {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--violet);
-      cursor: pointer;
-    }
+.carte-rare {
+  border-color: #b8860b;
+}
 
-    .carte.cachee {
-      display: none;
-    }
+.carte-rare:hover {
+  box-shadow: 0 0 23px #e8bd5244;
+}
 
-    /* SECTIONS RARES ET SECRÈTES */
-    .banniere-rare,
-    .banniere-secrete {
-      padding: 20px;
-      margin-bottom: 22px;
-      border-radius: 14px;
-      line-height: 1.6;
-    }
+.carte-secrete {
+  border-color: #c084fc;
+  box-shadow: 0 0 14px #a855f722;
+}
 
-    .banniere-rare {
-      background: linear-gradient(110deg, #fff5cf, #fffdf4);
-      border: 1px solid #e8c75e;
-    }
+.carte-secrete:hover {
+  box-shadow: 0 0 27px #c084fc66;
+}
 
-    .banniere-secrete {
-      background: linear-gradient(110deg, #f3d9ff, #fff7ff);
-      border: 1px solid #d8a0fa;
-    }
+.case-obtenue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 13px;
+  padding: 10px;
+  background: #ffffff08;
+  border: 1px solid #ffffff0d;
+  border-radius: 9px;
+  color: var(--secondaire);
+  cursor: pointer;
+}
 
-    /* À PROPOS */
-    .apropos {
-      margin-bottom: 45px;
-      padding: 25px;
-      background: white;
-      border-radius: 16px;
-      line-height: 1.8;
-    }
+.case-obtenue input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--violet);
+  cursor: pointer;
+}
 
-    footer {
-      padding: 24px;
-      text-align: center;
-      color: white;
-      background: #3b155a;
-    }
+.carte.cachee { display: none; }
 
-    /* VISIONNEUSE */
-    .visionneuse {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: #13091eee;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 65px 15px 20px;
-    }
+/* BANNIÈRES */
+.banniere-rare,
+.banniere-secrete {
+  margin-bottom: 22px;
+  padding: 17px 20px;
+  border-radius: 12px;
+  line-height: 1.7;
+  color: var(--secondaire);
+}
 
-    .visionneuse.ouverte {
-      display: flex;
-    }
+.banniere-rare {
+  background: #49371333;
+  border: 1px solid #b8860b88;
+}
 
-    .visionneuse img {
-      max-width: 90vw;
-      max-height: 76vh;
-      object-fit: contain;
-      cursor: grab;
-      user-select: none;
-      -webkit-user-drag: none;
-      transform-origin: center;
-    }
+.banniere-secrete {
+  background: #581c8733;
+  border: 1px solid #c084fc88;
+}
 
-    .visionneuse img:active {
-      cursor: grabbing;
-    }
+/* À PROPOS */
+.apropos {
+  padding: 24px;
+  background: var(--panneau);
+  border: 1px solid #60358a;
+  border-radius: 15px;
+  color: var(--secondaire);
+  line-height: 1.8;
+}
 
-    .commandes-zoom {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 18px;
-    }
+.apropos h3 { color: var(--violet-clair); }
 
-    .commandes-zoom button,
-    .fermer {
-      border: none;
-      border-radius: 10px;
-      padding: 11px 16px;
-      color: white;
-      background: var(--violet);
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
+footer {
+  margin-top: 25px;
+  padding: 25px 15px;
+  text-align: center;
+  color: var(--secondaire);
+  background: #100919;
+  border-top: 1px solid #60358a;
+}
 
-    .commandes-zoom button:hover,
-    .fermer:hover {
-      background: var(--violet-clair);
-    }
+/* VISIONNEUSE */
+.visionneuse {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 65px 15px 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #08040df2;
+}
 
-    .fermer {
-      position: absolute;
-      top: 15px;
-      right: 18px;
-      font-size: 1.5rem;
-    }
+.visionneuse.ouverte { display: flex; }
 
-    .aide-zoom {
-      margin-top: 12px;
-      color: #e9d5ff;
-      font-size: 0.9rem;
-      text-align: center;
-    }
+#imageZoom {
+  max-width: 90vw;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: none;
+  transform-origin: center;
+}
 
-    @media (max-width: 650px) {
-      nav {
-        gap: 3px;
-        padding: 9px 5px;
-      }
+#imageZoom:active { cursor: grabbing; }
 
-      nav a {
-        padding: 9px 8px;
-        font-size: 0.9rem;
-      }
+.fermer, .commandes-zoom button {
+  padding: 11px 16px;
+  border: 1px solid #b66df5;
+  border-radius: 9px;
+  background: #6b21a8;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-      .article {
-        flex-direction: column-reverse;
-        align-items: stretch;
-      }
+.fermer {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  font-size: 1.3rem;
+}
 
-      .article img {
-        width: 100%;
-        max-height: 220px;
-      }
+.commandes-zoom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 17px;
+}
 
-      .cartes {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
+.commandes-zoom button:hover, .fermer:hover {
+  background: #9333ea;
+}
 
-      .carte {
-        padding: 8px;
-      }
+.aide-zoom {
+  color: var(--secondaire);
+  text-align: center;
+  font-size: .9rem;
+}
 
-      .carte img {
-        height: 190px;
-      }
+@media (max-width: 650px) {
+  nav { gap: 3px; padding: 9px 4px; }
+  nav a { padding: 9px 8px; font-size: .85rem; }
 
-      .carte h3 {
-        font-size: 1rem;
-      }
+  header { padding: 45px 15px 35px; }
 
-      .obtention {
-        font-size: 0.85rem;
-      }
-    }
+  .article {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    padding: 17px;
+  }
 
-    @media (max-width: 360px) {
-      .cartes {
-        grid-template-columns: 1fr;
-      }
+  .article img {
+    width: 100%;
+    max-height: 220px;
+  }
 
-      .carte img {
-        height: 260px;
-      }
-    }
-  </style>
+  .cartes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .carte { padding: 8px; }
+  .cadre-image { height: 230px; }
+  .carte h3 { font-size: .95rem; }
+  .case-obtenue { font-size: .85rem; }
+}
+
+@media (max-width: 350px) {
+  .cartes { grid-template-columns: 1fr; }
+  .cadre-image { height: 300px; }
+}
+</style>
 </head>
 
 <body>
 
-  <nav>
-    <a href="#accueil">🏠 Accueil</a>
-    <a href="#communes">🎴 Communes</a>
-    <a href="#rares">💎 Rares</a>
-    <a href="#secrets">🔮 Secrets</a>
-    <a href="#apropos">ℹ️ À propos</a>
-  </nav>
+<nav>
+  <a href="#accueil">🏠 Accueil</a>
+  <a href="#communes">🎴 Communes</a>
+  <a href="#rares">💎 Rares</a>
+  <a href="#secrets">🔮 Secrets</a>
+  <a href="#apropos">ℹ️ À propos</a>
+</nav>
 
-  <header id="accueil">
-    <h1>🎴 DeltaCard List</h1>
-    <p>Ta collection de DeltaCards, à toi de toutes les obtenir !</p>
-  </header>
+<header id="accueil">
+  <h1>🎴 DeltaCard List</h1>
+  <p>Collectionne les cartes. Découvre les raretés. Complète ta collection.</p>
+</header>
 
-  <main>
+<main>
 
-    <!-- ACCUEIL ET ARTICLE -->
-    <section>
-      <h2>Bienvenue dans ma collection !</h2>
-      <p class="intro">
-        Retrouve ici toutes mes DeltaCards : les cartes communes, les cartes rares
-        et les précieuses cartes secrètes. Coche celles que tu as obtenues et
-        suis ta progression !
+<section id="bienvenue">
+  <h2>Bienvenue dans ma collection !</h2>
+  <p class="intro">
+    Retrouve toutes tes DeltaCards et suis ta progression.
+    Les cartes communes, rares et secrètes sont réunies ici !
+  </p>
+
+  <article class="article">
+    <div class="article-texte">
+      <h3>✨ Le Début de la Première Série !</h3>
+      <p>
+        La première série de DeltaCards est arrivée !
+        Découvre les cartes de Kris, Jevil, Ralsei et bien d'autres.
+        Certaines sont communes, d'autres rares, et les plus difficiles
+        à trouver sont les secrètes.
       </p>
-
-      <article class="article">
-        <div class="article-texte">
-          <h3>✨ Le Début de la Première Série !</h3>
-          <p>
-            La première série de DeltaCards arrive ! Découvre les cartes de Kris,
-            Jevil, Ralsei et bien d'autres personnages. Certaines cartes sont
-            communes, d'autres sont rares, et les plus difficiles à trouver
-            sont les secrètes !
-          </p>
-          <p><strong>Collectionne-les toutes ! 🎴</strong></p>
-        </div>
-        <img src="premiere-serie.png" alt="Illustration de la première série DeltaCards">
-      </article>
-    </section>
-
-    <!-- FILTRES COMMUNS AUX TROIS CATÉGORIES -->
-    <section id="collection">
-      <h2>📚 Ma collection</h2>
-      <p class="intro">
-        Utilise les filtres pour afficher toutes tes cartes, celles que tu as
-        obtenues ou celles qu'il te reste à trouver.
-      </p>
-
-      <div class="filtres">
-        <button class="active" data-filtre="toutes">Toutes</button>
-        <button data-filtre="obtenues">✓ Obtenues</button>
-        <button data-filtre="manquantes">✗ Non obtenues</button>
-      </div>
-
-      <p class="compteur" id="compteur">Chargement de la collection...</p>
-    </section>
-
-    <!-- COMMUNES -->
-    <section id="communes">
-      <h2>🎴 Cartes Communes</h2>
-      <p class="intro">Les cartes classiques de la collection.</p>
-
-      <div class="cartes">
-        <article class="carte" data-id="delta1" data-categorie="commune">
-          <img src="Delta1.png" alt="DeltaCard 1" data-zoom>
-          <h3>Delta #1</h3>
-          <span class="etiquette">Commune</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="delta1">
-            Obtenue
-          </label>
-        </article>
-
-        <article class="carte" data-id="delta2" data-categorie="commune">
-          <img src="Delta2.png" alt="DeltaCard 2" data-zoom>
-          <h3>Delta #2</h3>
-          <span class="etiquette">Commune</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="delta2">
-            Obtenue
-          </label>
-        </article>
-
-        <article class="carte" data-id="delta3" data-categorie="commune">
-          <img src="Delta3.png" alt="DeltaCard 3" data-zoom>
-          <h3>Delta #3</h3>
-          <span class="etiquette">Commune</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="delta3">
-            Obtenue
-          </label>
-        </article>
-
-        <article class="carte" data-id="delta4" data-categorie="commune">
-          <img src="Delta4.png" alt="DeltaCard 4" data-zoom>
-          <h3>Delta #4</h3>
-          <span class="etiquette">Commune</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="delta4">
-            Obtenue
-          </label>
-        </article>
-      </div>
-    </section>
-
-    <!-- RARES -->
-    <section id="rares">
-      <h2>💎 Cartes Rares</h2>
-
-      <div class="banniere-rare">
-        <strong>✨ Niveau de rareté : Rare</strong><br>
-        Ces cartes sont plus difficiles à obtenir que les communes,
-        mais restent plus accessibles que les cartes secrètes. Prends-en soin !
-      </div>
-
-      <div class="cartes">
-        <article class="carte rare" data-id="rare1" data-categorie="rare">
-          <img src="Rare1.png" alt="Carte Rare 1" data-zoom>
-          <h3>Rare #1</h3>
-          <span class="etiquette">💎 Rare</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="rare1">
-            Obtenue
-          </label>
-        </article>
-
-        <article class="carte rare" data-id="rare2" data-categorie="rare">
-          <img src="Rare2.png" alt="Carte Rare 2" data-zoom>
-          <h3>Rare #2</h3>
-          <span class="etiquette">💎 Rare</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="rare2">
-            Obtenue
-          </label>
-        </article>
-
-        <article class="carte rare" data-id="rare3" data-categorie="rare">
-          <img src="Rare3.png" alt="Carte Rare 3" data-zoom>
-          <h3>Rare #3</h3>
-          <span class="etiquette">💎 Rare</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="rare3">
-            Obtenue
-          </label>
-        </article>
-      </div>
-    </section>
-
-    <!-- SECRÈTES -->
-    <section id="secrets">
-      <h2>🔮 Cartes Secrètes</h2>
-
-      <div class="banniere-secrete">
-        <strong>🌌 Niveau de rareté : Secret</strong><br>
-        Les cartes les plus rares de DeltaCard List ! Elles sont spéciales
-        et particulièrement difficiles à trouver.
-      </div>
-
-      <div class="cartes">
-        <article class="carte secrete" data-id="secret1" data-categorie="secrete">
-          <img src="Secret1.png" alt="Carte Secrète 1" data-zoom>
-          <h3>Secret #1</h3>
-          <span class="etiquette">🔮 Secrète</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="secret1">
-            Obtenue
-          </label>
-        </article>
-
-        <article class="carte secrete" data-id="secret2" data-categorie="secrete">
-          <img src="Secret2.png" alt="Carte Secrète 2" data-zoom>
-          <h3>Secret #2</h3>
-          <span class="etiquette">🔮 Secrète</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="secret2">
-            Obtenue
-          </label>
-        </article>
-
-        <article class="carte secrete" data-id="secret3" data-categorie="secrete">
-          <img src="Secret3.png" alt="Carte Secrète 3" data-zoom>
-          <h3>Secret #3</h3>
-          <span class="etiquette">🔮 Secrète</span>
-          <label class="obtention">
-            <input type="checkbox" data-case="secret3">
-            Obtenue
-          </label>
-        </article>
-      </div>
-    </section>
-
-    <!-- À PROPOS -->
-    <section id="apropos">
-      <h2>ℹ️ À propos</h2>
-      <div class="apropos">
-        <h3>Bienvenue sur DeltaCard List !</h3>
-        <p>
-          Ce site est un espace personnel pour répertorier les DeltaCards
-          et suivre sa collection.
-        </p>
-        <p>
-          <strong>🎴 Communes :</strong> les cartes classiques.<br>
-          <strong>💎 Rares :</strong> des cartes plus difficiles à obtenir.<br>
-          <strong>🔮 Secrètes :</strong> les cartes les plus rares.
-        </p>
-        <p>
-          Ta progression est enregistrée dans ton navigateur.
-          Si tu changes de navigateur ou d'appareil, les cases cochées
-          ne seront pas automatiquement transférées.
-        </p>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>🎴 DeltaCard List · Bonne collection ! 💜</p>
-  </footer>
-
-  <!-- VISIONNEUSE -->
-  <div class="visionneuse" id="visionneuse" aria-label="Visionneuse de cartes">
-    <button class="fermer" id="fermer" aria-label="Fermer">✕</button>
-
-    <img id="imageZoom" src="" alt="Carte agrandie">
-
-    <div class="commandes-zoom">
-      <button id="zoomMoins">− Zoom</button>
-      <button id="zoomReset">Réinitialiser</button>
-      <button id="zoomPlus">+ Zoom</button>
+      <p><strong>À toi de compléter la collection ! 💜</strong></p>
     </div>
+    <img src="premiere-serie.png" alt="Illustration de la première série">
+  </article>
+</section>
 
-    <p class="aide-zoom">
-      Molette pour zoomer · Clique-glisse pour déplacer · Échap pour fermer
-    </p>
+<section id="collection">
+  <h2>📚 Ma collection</h2>
+  <p class="description">
+    Filtre les cartes selon ta progression.
+  </p>
+
+  <div class="filtres">
+    <button class="active" data-filtre="toutes">Toutes</button>
+    <button data-filtre="obtenues">✓ Obtenues</button>
+    <button data-filtre="manquantes">✗ Non obtenues</button>
   </div>
 
-  <script>
-    // SAUVEGARDE DE LA COLLECTION
-    const CLE_SAUVEGARDE = "deltacards-obtenues";
+  <p class="compteur" id="compteur"></p>
+</section>
 
-    let obtenues = {};
+<section id="communes">
+  <h2>🎴 Cartes Communes</h2>
+  <p class="description">Les cartes classiques de la série.</p>
 
-    try {
-      obtenues = JSON.parse(localStorage.getItem(CLE_SAUVEGARDE)) || {};
-    } catch (erreur) {
-      obtenues = {};
-    }
+  <div class="cartes">
+    <article class="carte" data-id="delta1">
+      <div class="cadre-image">
+        <img src="Delta1.png" alt="DeltaCard 1" data-zoom>
+      </div>
+      <h3>Delta #1</h3>
+      <span class="badge badge-commune">COMMUNE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="delta1"> Obtenue
+      </label>
+    </article>
 
-    const cases = document.querySelectorAll("[data-case]");
-    const cartes = document.querySelectorAll(".carte[data-id]");
-    const compteur = document.getElementById("compteur");
+    <article class="carte" data-id="delta2">
+      <div class="cadre-image">
+        <img src="Delta2.png" alt="DeltaCard 2" data-zoom>
+      </div>
+      <h3>Delta #2</h3>
+      <span class="badge badge-commune">COMMUNE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="delta2"> Obtenue
+      </label>
+    </article>
 
-    function sauvegarder() {
-      localStorage.setItem(CLE_SAUVEGARDE, JSON.stringify(obtenues));
-    }
+    <article class="carte" data-id="delta3">
+      <div class="cadre-image">
+        <img src="Delta3.png" alt="DeltaCard 3" data-zoom>
+      </div>
+      <h3>Delta #3</h3>
+      <span class="badge badge-commune">COMMUNE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="delta3"> Obtenue
+      </label>
+    </article>
 
-    function actualiserCompteur() {
-      const total = cartes.length;
-      const nombreObtenues = cartes.length
-        ? [...cartes].filter(carte => obtenues[carte.dataset.id]).length
-        : 0;
+    <article class="carte" data-id="delta4">
+      <div class="cadre-image">
+        <img src="Delta4.png" alt="DeltaCard 4" data-zoom>
+      </div>
+      <h3>Delta #4</h3>
+      <span class="badge badge-commune">COMMUNE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="delta4"> Obtenue
+      </label>
+    </article>
+  </div>
+</section>
 
-      compteur.textContent =
-        `${nombreObtenues} carte${nombreObtenues > 1 ? "s" : ""} obtenue${nombreObtenues > 1 ? "s" : ""} sur ${total}`;
-    }
+<section id="rares">
+  <h2>💎 Cartes Rares</h2>
+  <div class="banniere-rare">
+    <strong style="color:#ffe5a0">✨ Rareté : Rare</strong><br>
+    Des cartes plus difficiles à obtenir que les communes,
+    mais moins rares que les secrètes !
+  </div>
 
-    // Restaurer les cases cochées
-    cases.forEach(caseCarte => {
-      const id = caseCarte.dataset.case;
-      caseCarte.checked = Boolean(obtenues[id]);
+  <div class="cartes">
+    <article class="carte carte-rare" data-id="rare1">
+      <div class="cadre-image">
+        <img src="Rare1.png" alt="Carte Rare 1" data-zoom>
+      </div>
+      <h3>Rare #1</h3>
+      <span class="badge badge-rare">💎 RARE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="rare1"> Obtenue
+      </label>
+    </article>
 
-      caseCarte.addEventListener("change", () => {
-        obtenues[id] = caseCarte.checked;
-        sauvegarder();
-        appliquerFiltre();
-        actualiserCompteur();
-      });
-    });
+    <article class="carte carte-rare" data-id="rare2">
+      <div class="cadre-image">
+        <img src="Rare2.png" alt="Carte Rare 2" data-zoom>
+      </div>
+      <h3>Rare #2</h3>
+      <span class="badge badge-rare">💎 RARE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="rare2"> Obtenue
+      </label>
+    </article>
 
-    // FILTRES
-    let filtreActif = "toutes";
+    <article class="carte carte-rare" data-id="rare3">
+      <div class="cadre-image">
+        <img src="Rare3.png" alt="Carte Rare 3" data-zoom>
+      </div>
+      <h3>Rare #3</h3>
+      <span class="badge badge-rare">💎 RARE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="rare3"> Obtenue
+      </label>
+    </article>
+  </div>
+</section>
 
-    function appliquerFiltre() {
-      cartes.forEach(carte => {
-        const id = carte.dataset.id;
-        const estObtenue = Boolean(obtenues[id]);
+<section id="secrets">
+  <h2>🔮 Cartes Secrètes</h2>
+  <div class="banniere-secrete">
+    <strong style="color:#f5d0fe">🌌 Rareté : Secrète</strong><br>
+    Les cartes les plus rares de la collection, avec leur cadre violet lumineux !
+  </div>
 
-        let afficher = true;
+  <div class="cartes">
+    <article class="carte carte-secrete" data-id="secret1">
+      <div class="cadre-image">
+        <img src="Secret1.png" alt="Carte Secrète 1" data-zoom>
+      </div>
+      <h3>Secret #1</h3>
+      <span class="badge badge-secrete">🔮 SECRÈTE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="secret1"> Obtenue
+      </label>
+    </article>
 
-        if (filtreActif === "obtenues") {
-          afficher = estObtenue;
-        } else if (filtreActif === "manquantes") {
-          afficher = !estObtenue;
-        }
+    <article class="carte carte-secrete" data-id="secret2">
+      <div class="cadre-image">
+        <img src="Secret2.png" alt="Carte Secrète 2" data-zoom>
+      </div>
+      <h3>Secret #2</h3>
+      <span class="badge badge-secrete">🔮 SECRÈTE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="secret2"> Obtenue
+      </label>
+    </article>
 
-        carte.classList.toggle("cachee", !afficher);
-      });
-    }
+    <article class="carte carte-secrete" data-id="secret3">
+      <div class="cadre-image">
+        <img src="Secret3.png" alt="Carte Secrète 3" data-zoom>
+      </div>
+      <h3>Secret #3</h3>
+      <span class="badge badge-secrete">🔮 SECRÈTE</span>
+      <label class="case-obtenue">
+        <input type="checkbox" data-case="secret3"> Obtenue
+      </label>
+    </article>
+  </div>
+</section>
 
-    document.querySelectorAll("[data-filtre]").forEach(bouton => {
-      bouton.addEventListener("click", () => {
-        filtreActif = bouton.dataset.filtre;
+<section id="apropos">
+  <h2>ℹ️ À propos</h2>
+  <div class="apropos">
+    <h3>À propos de DeltaCard List</h3>
+    <p>
+      Un site personnel pour suivre sa collection de DeltaCards.
+      Les cartes sont classées selon trois niveaux de rareté :
+    </p>
+    <p>
+      🎴 <strong>Communes</strong> : les cartes classiques.<br>
+      💎 <strong>Rares</strong> : les cartes plus difficiles à obtenir.<br>
+      🔮 <strong>Secrètes</strong> : les cartes les plus rares.
+    </p>
+    <p>Les cartes obtenues sont sauvegardées dans le navigateur utilisé.</p>
+  </div>
+</section>
 
-        document.querySelectorAll("[data-filtre]").forEach(autre => {
-          autre.classList.toggle("active", autre === bouton);
-        });
+</main>
 
-        appliquerFiltre();
-      });
-    });
+<footer>🎴 DeltaCard List · Fait avec 💜</footer>
 
+<div class="visionneuse" id="visionneuse">
+  <button class="fermer" id="fermer" aria-label="Fermer">✕</button>
+  <img id="imageZoom" src="" alt="Carte agrandie">
+
+  <div class="commandes-zoom">
+    <button id="zoomMoins">− Zoom</button>
+    <button id="zoomReset">Réinitialiser</button>
+    <button id="zoomPlus">+ Zoom</button>
+  </div>
+
+  <p class="aide-zoom">
+    Molette : zoom · Clique-glisse : déplacer · Échap : fermer
+  </p>
+</div>
+
+<script>
+const CLE = "deltacards-obtenues";
+let obtenues = {};
+
+try {
+  obtenues = JSON.parse(localStorage.getItem(CLE)) || {};
+} catch (e) {
+  obtenues = {};
+}
+
+const cartes = [...document.querySelectorAll(".carte[data-id]")];
+const cases = document.querySelectorAll("[data-case]");
+const compteur = document.getElementById("compteur");
+let filtreActif = "toutes";
+
+function sauvegarder() {
+  try {
+    localStorage.setItem(CLE, JSON.stringify(obtenues));
+  } catch (e) {
+    console.warn("La sauvegarde du navigateur est indisponible.");
+  }
+}
+
+function actualiserCompteur() {
+  const total = cartes.length;
+  const nombre = cartes.filter(c => obtenues[c.dataset.id]).length;
+  compteur.textContent = `🎴 ${nombre} / ${total} cartes obtenues`;
+}
+
+function appliquerFiltre() {
+  cartes.forEach(carte => {
+    const estObtenue = Boolean(obtenues[carte.dataset.id]);
+
+    carte.classList.toggle(
+      "cachee",
+      (filtreActif === "obtenues" && !estObtenue) ||
+      (filtreActif === "manquantes" && estObtenue)
+    );
+  });
+}
+
+cases.forEach(input => {
+  const id = input.dataset.case;
+  input.checked = Boolean(obtenues[id]);
+
+  input.addEventListener("change", () => {
+    obtenues[id] = input.checked;
+    sauvegarder();
     actualiserCompteur();
     appliquerFiltre();
+  });
+});
 
-    // VISIONNEUSE ET ZOOM
-    const visionneuse = document.getElementById("visionneuse");
-    const imageZoom = document.getElementById("imageZoom");
-    const boutonFermer = document.getElementById("fermer");
+document.querySelectorAll("[data-filtre]").forEach(bouton => {
+  bouton.addEventListener("click", () => {
+    filtreActif = bouton.dataset.filtre;
 
-    let zoom = 1;
-    let deplacementX = 0;
-    let deplacementY = 0;
-    let glisse = false;
-    let departX = 0;
-    let departY = 0;
-
-    function actualiserZoom() {
-      imageZoom.style.transform =
-        `translate(${deplacementX}px, ${deplacementY}px) scale(${zoom})`;
-    }
-
-    function reinitialiserZoom() {
-      zoom = 1;
-      deplacementX = 0;
-      deplacementY = 0;
-      actualiserZoom();
-    }
-
-    function ouvrirVisionneuse(source, description) {
-      imageZoom.src = source;
-      imageZoom.alt = description || "Carte agrandie";
-      reinitialiserZoom();
-      visionneuse.classList.add("ouverte");
-    }
-
-    function fermerVisionneuse() {
-      visionneuse.classList.remove("ouverte");
-      imageZoom.src = "";
-      glisse = false;
-    }
-
-    document.querySelectorAll("[data-zoom]").forEach(image => {
-      image.addEventListener("click", () => {
-        ouvrirVisionneuse(image.src, image.alt);
-      });
+    document.querySelectorAll("[data-filtre]").forEach(b => {
+      b.classList.toggle("active", b === bouton);
     });
 
-    document.getElementById("zoomPlus").addEventListener("click", () => {
-      zoom = Math.min(zoom + 0.25, 4);
-      actualiserZoom();
-    });
+    appliquerFiltre();
+  });
+});
 
-    document.getElementById("zoomMoins").addEventListener("click", () => {
-      zoom = Math.max(zoom - 0.25, 0.5);
-      actualiserZoom();
-    });
+actualiserCompteur();
+appliquerFiltre();
 
-    document.getElementById("zoomReset").addEventListener("click", reinitialiserZoom);
-    boutonFermer.addEventListener("click", fermerVisionneuse);
+/* VISIONNEUSE */
+const visionneuse = document.getElementById("visionneuse");
+const imageZoom = document.getElementById("imageZoom");
 
-    visionneuse.addEventListener("click", evenement => {
-      if (evenement.target === visionneuse) {
-        fermerVisionneuse();
-      }
-    });
+let zoom = 1;
+let x = 0;
+let y = 0;
+let glisse = false;
+let departX = 0;
+let departY = 0;
 
-    document.addEventListener("keydown", evenement => {
-      if (evenement.key === "Escape") {
-        fermerVisionneuse();
-      }
-    });
+function actualiserZoom() {
+  imageZoom.style.transform = `translate(${x}px, ${y}px) scale(${zoom})`;
+}
 
-    imageZoom.addEventListener("wheel", evenement => {
-      evenement.preventDefault();
+function resetZoom() {
+  zoom = 1;
+  x = 0;
+  y = 0;
+  actualiserZoom();
+}
 
-      zoom += evenement.deltaY < 0 ? 0.15 : -0.15;
-      zoom = Math.max(0.5, Math.min(zoom, 4));
+document.querySelectorAll("[data-zoom]").forEach(img => {
+  img.addEventListener("click", () => {
+    imageZoom.src = img.src;
+    imageZoom.alt = img.alt;
+    resetZoom();
+    visionneuse.classList.add("ouverte");
+  });
+});
 
-      actualiserZoom();
-    }, { passive: false });
+function fermerVisionneuse() {
+  visionneuse.classList.remove("ouverte");
+  imageZoom.src = "";
+  glisse = false;
+}
 
-    imageZoom.addEventListener("pointerdown", evenement => {
-      glisse = true;
-      departX = evenement.clientX - deplacementX;
-      departY = evenement.clientY - deplacementY;
-      imageZoom.setPointerCapture(evenement.pointerId);
-    });
+document.getElementById("fermer").addEventListener("click", fermerVisionneuse);
 
-    imageZoom.addEventListener("pointermove", evenement => {
-      if (!glisse) return;
+visionneuse.addEventListener("click", e => {
+  if (e.target === visionneuse) fermerVisionneuse();
+});
 
-      deplacementX = evenement.clientX - departX;
-      deplacementY = evenement.clientY - departY;
-      actualiserZoom();
-    });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") fermerVisionneuse();
+});
 
-    function arreterGlisse() {
-      glisse = false;
-    }
+document.getElementById("zoomPlus").addEventListener("click", () => {
+  zoom = Math.min(4, zoom + 0.25);
+  actualiserZoom();
+});
 
-    imageZoom.addEventListener("pointerup", arreterGlisse);
-    imageZoom.addEventListener("pointercancel", arreterGlisse);
-  </script>
+document.getElementById("zoomMoins").addEventListener("click", () => {
+  zoom = Math.max(0.5, zoom - 0.25);
+  actualiserZoom();
+});
+
+document.getElementById("zoomReset").addEventListener("click", resetZoom);
+
+imageZoom.addEventListener("wheel", e => {
+  e.preventDefault();
+  zoom = Math.max(0.5, Math.min(4, zoom + (e.deltaY < 0 ? 0.15 : -0.15)));
+  actualiserZoom();
+}, { passive: false });
+
+imageZoom.addEventListener("pointerdown", e => {
+  glisse = true;
+  departX = e.clientX - x;
+  departY = e.clientY - y;
+  imageZoom.setPointerCapture(e.pointerId);
+});
+
+imageZoom.addEventListener("pointermove", e => {
+  if (!glisse) return;
+  x = e.clientX - departX;
+  y = e.clientY - departY;
+  actualiserZoom();
+});
+
+imageZoom.addEventListener("pointerup", () => glisse = false);
+imageZoom.addEventListener("pointercancel", () => glisse = false);
+</script>
 
 </body>
 </html>

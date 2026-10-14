@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10091c">
-  <title>DeltaCard List — Accueil</title>
+  <meta name="theme-color" content="#0d0815">
+  <title>LKB Card List</title>
   <link rel="icon" href="logo.png">
 
   <style>
@@ -16,10 +16,10 @@
     }
 
     :root {
-      --bg: #0d0815;
+      --background: #0d0815;
       --panel: #191025;
       --purple: #a855f7;
-      --purple-light: #d8b4fe;
+      --light-purple: #d8b4fe;
       --text: #f7f0ff;
       --muted: #b9acc9;
     }
@@ -30,11 +30,11 @@
 
     body {
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
         radial-gradient(ellipse at 50% 0%, #32154e 0%, transparent 48%),
-        var(--bg);
+        var(--background);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     a {
@@ -42,7 +42,7 @@
       text-decoration: none;
     }
 
-    /* Navigation */
+    /* NAVIGATION */
 
     nav {
       position: sticky;
@@ -51,67 +51,65 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      gap: 15px;
       padding: 18px 7%;
-      background: rgba(13, 8, 21, 0.9);
+      background: rgba(13, 8, 21, 0.92);
       border-bottom: 1px solid #39234c;
       backdrop-filter: blur(14px);
     }
 
     .logo {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 900;
       letter-spacing: 1px;
     }
 
     .logo span {
-      color: var(--purple-light);
+      color: var(--light-purple);
     }
 
     .nav-link {
       color: var(--muted);
       font-size: 0.9rem;
-      transition: color 0.2s;
     }
 
     .nav-link:hover {
       color: white;
     }
 
-    /* Hero */
+    /* ACCUEIL */
 
     .hero {
       text-align: center;
-      padding: 85px 20px 55px;
+      padding: 85px 20px 60px;
     }
 
     .eyebrow {
       display: inline-block;
       padding: 8px 14px;
       margin-bottom: 22px;
-      color: var(--purple-light);
+      color: var(--light-purple);
       background: #251435;
       border: 1px solid #5f3581;
       border-radius: 30px;
       font-size: 0.8rem;
       letter-spacing: 1px;
-      text-transform: uppercase;
     }
 
     h1 {
-      font-size: clamp(2.5rem, 7vw, 5rem);
-      line-height: 1.08;
+      font-size: clamp(2.7rem, 8vw, 5.2rem);
+      line-height: 1.1;
       letter-spacing: -2px;
       margin-bottom: 20px;
     }
 
     h1 span {
-      color: var(--purple-light);
+      color: var(--light-purple);
       text-shadow: 0 0 30px #a855f766;
     }
 
     .hero p {
-      max-width: 620px;
+      max-width: 650px;
       margin: 0 auto;
       color: var(--muted);
       font-size: 1.05rem;
@@ -119,17 +117,17 @@
     }
 
     .scroll-hint {
-      margin-top: 35px;
+      margin-top: 32px;
       color: #a58bbd;
       font-size: 0.9rem;
     }
 
-    /* Collections */
+    /* COLLECTIONS */
 
     .collections {
       width: min(1100px, 90%);
       margin: 0 auto;
-      padding: 25px 0 90px;
+      padding: 20px 0 75px;
     }
 
     .section-heading {
@@ -143,7 +141,7 @@
 
     .section-heading p {
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .collection-grid {
@@ -153,19 +151,15 @@
     }
 
     .collection-card {
-      position: relative;
       display: flex;
       flex-direction: column;
       min-width: 0;
-      overflow: hidden;
       padding: 30px;
+      overflow: hidden;
       background: linear-gradient(145deg, #21132f, #120c1c 75%);
       border: 1px solid #49305e;
       border-radius: 24px;
-      transition:
-        transform 0.25s,
-        border-color 0.25s,
-        box-shadow 0.25s;
+      transition: transform 0.25s, box-shadow 0.25s;
     }
 
     .collection-card:hover {
@@ -195,6 +189,7 @@
       place-items: center;
       width: 62px;
       height: 62px;
+      flex-shrink: 0;
       border-radius: 18px;
       font-size: 2rem;
       background: #39204e;
@@ -229,9 +224,9 @@
       margin-bottom: 12px;
     }
 
-    .collection-card .description {
+    .description {
       color: var(--muted);
-      line-height: 1.75;
+      line-height: 1.8;
       margin-bottom: 25px;
     }
 
@@ -243,16 +238,17 @@
     }
 
     .stat {
-      padding: 14px 7px;
+      padding: 14px 6px;
       text-align: center;
       background: #0f0918;
       border: 1px solid #30203f;
       border-radius: 12px;
+      overflow-wrap: anywhere;
     }
 
     .stat strong {
       display: block;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-bottom: 6px;
     }
 
@@ -262,7 +258,7 @@
     }
 
     .delta-card .stat strong {
-      color: var(--purple-light);
+      color: var(--light-purple);
     }
 
     .piggy-card .stat strong {
@@ -298,11 +294,11 @@
       border: 1px solid #75435d;
     }
 
-    /* Rarity section */
+    /* RARETÉS */
 
     .rarities {
       width: min(1100px, 90%);
-      margin: 0 auto 80px;
+      margin: 0 auto 75px;
       padding: 35px;
       background: #15101e;
       border: 1px solid #30213e;
@@ -339,7 +335,7 @@
     .rarity p {
       color: var(--muted);
       font-size: 0.88rem;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .common h3 {
@@ -363,7 +359,38 @@
       color: #d7a5ff;
     }
 
-    /* Footer */
+    /* PIGGYCARD */
+
+    .piggy-info {
+      width: min(1100px, 90%);
+      margin: 0 auto 80px;
+      padding: 30px;
+      background: linear-gradient(135deg, #241426, #15101e);
+      border: 1px solid #61344e;
+      border-radius: 22px;
+    }
+
+    .piggy-info h2 {
+      color: #ffafd2;
+      margin-bottom: 12px;
+    }
+
+    .piggy-info p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .piggy-note {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 9px 13px;
+      color: #ffc3df;
+      background: #49253b;
+      border-radius: 10px;
+      font-size: 0.85rem;
+    }
+
+    /* PIED DE PAGE */
 
     footer {
       padding: 30px 20px;
@@ -371,11 +398,11 @@
       border-top: 1px solid #30213e;
       color: #9888a8;
       font-size: 0.85rem;
-      line-height: 1.8;
+      line-height: 1.9;
     }
 
     footer span {
-      color: var(--purple-light);
+      color: var(--light-purple);
     }
 
     @media (max-width: 700px) {
@@ -384,7 +411,7 @@
       }
 
       .logo {
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
 
       .hero {
@@ -400,7 +427,8 @@
         padding: 23px;
       }
 
-      .rarities {
+      .rarities,
+      .piggy-info {
         padding: 23px;
       }
 
@@ -412,34 +440,42 @@
 </head>
 
 <body>
+
   <nav>
-    <a class="logo" href="index.html">💜 DELTA<span>CARD</span></a>
+    <a class="logo" href="index.html">💜 LKB <span>CARD LIST</span></a>
     <a class="nav-link" href="#collections">Mes collections ↓</a>
   </nav>
 
   <header class="hero">
     <div class="eyebrow">✦ Ton univers de cartes ✦</div>
 
-    <h1>Bienvenue sur<br><span>DeltaCard List</span></h1>
+    <h1>Bienvenue sur<br><span>LKB Card List</span></h1>
 
     <p>
       Découvre tes collections de cartes, explore les différentes raretés
       et suis tes trouvailles dans un univers rempli de surprises.
     </p>
 
-    <div class="scroll-hint">↓ Choisis ta collection pour commencer ↓</div>
+    <div class="scroll-hint">
+      ↓ Choisis ta collection pour commencer ↓
+    </div>
   </header>
 
   <main>
+
     <section class="collections" id="collections">
       <div class="section-heading">
         <h2>✨ Choisis ton univers</h2>
-        <p>Chaque collection a son propre univers. Laquelle vas-tu explorer ?</p>
+        <p>
+          Chaque collection a son propre univers.
+          Laquelle vas-tu explorer ?
+        </p>
       </div>
 
       <div class="collection-grid">
 
-        <!-- DELTACARD -->
+        <!-- COLLECTION DELTACARD -->
+
         <article class="collection-card delta-card">
           <div class="card-top">
             <div class="collection-icon">💎</div>
@@ -459,10 +495,12 @@
               <strong>4</strong>
               <span>Communes</span>
             </div>
+
             <div class="stat">
               <strong>3</strong>
               <span>Rares</span>
             </div>
+
             <div class="stat">
               <strong>3</strong>
               <span>Secrètes</span>
@@ -470,11 +508,12 @@
           </div>
 
           <a class="card-button delta-button" href="deltacard.html">
-            Découvrir la collection →
+            💎 Découvrir DeltaCard →
           </a>
         </article>
 
-        <!-- PIGGYCARD -->
+        <!-- COLLECTION PIGGYCARD -->
+
         <article class="collection-card piggy-card">
           <div class="card-top">
             <div class="collection-icon">🐷</div>
@@ -484,9 +523,9 @@
           <h3>PiggyCard</h3>
 
           <p class="description">
-            Bienvenue dans l'univers PiggyCard ! Une nouvelle collection
-            qui commence doucement avec une première carte. D'autres
-            informations et fonctionnalités arriveront plus tard.
+            Découvre l'univers PiggyCard ! La collection commence
+            avec une première carte. Sa page complète et ses
+            fonctionnalités arriveront plus tard.
           </p>
 
           <div class="stats">
@@ -494,10 +533,12 @@
               <strong>1</strong>
               <span>Carte connue</span>
             </div>
+
             <div class="stat">
               <strong>À venir</strong>
               <span>Collection</span>
             </div>
+
             <div class="stat">
               <strong>🐽</strong>
               <span>Univers Piggy</span>
@@ -505,55 +546,73 @@
           </div>
 
           <a class="card-button piggy-button" href="#piggy-info">
-            En savoir plus ↓
+            🐷 En savoir plus ↓
           </a>
         </article>
 
       </div>
     </section>
 
-    <!-- RARETES -->
+    <!-- INFORMATIONS SUR LES RARETÉS -->
+
     <section class="rarities">
       <h2>🌟 Les raretés DeltaCard</h2>
+
       <p>
-        Chaque niveau de rareté apporte son style à la collection.
-        Retrouve ces trois catégories dans la page DeltaCard.
+        Chaque niveau de rareté apporte son propre style.
+        Retrouve ces catégories dans ta collection DeltaCard.
       </p>
 
       <div class="rarity-grid">
+
         <div class="rarity common">
           <h3>⚪ Communes</h3>
-          <p>Les cartes de base pour commencer et compléter ta collection.</p>
+          <p>
+            Les cartes de base pour commencer
+            et compléter ta collection.
+          </p>
         </div>
 
         <div class="rarity rare">
           <h3>💛 Rares</h3>
-          <p>Des cartes mises en valeur avec un style doré.</p>
+          <p>
+            Des cartes mises en valeur avec
+            un style doré.
+          </p>
         </div>
 
         <div class="rarity secret">
           <h3>🔮 Secrètes</h3>
-          <p>Des cartes mystérieuses avec une ambiance violette lumineuse.</p>
+          <p>
+            Des cartes mystérieuses avec
+            une ambiance violette lumineuse.
+          </p>
         </div>
+
       </div>
     </section>
 
-    <!-- PIGGYCARD -->
-    <section class="collections" id="piggy-info">
-      <div class="section-heading">
-        <h2>🐷 À propos des PiggyCards</h2>
-        <p>
-          Cette collection est encore au début de son aventure.
-          Pour l'instant, une seule carte est connue. Sa page complète
-          sera ajoutée lorsque la collection sera prête !
-        </p>
-      </div>
+    <!-- INFORMATIONS PIGGYCARD -->
+
+    <section class="piggy-info" id="piggy-info">
+      <h2>🐷 L'univers PiggyCard</h2>
+
+      <p>
+        PiggyCard est une collection en préparation.
+        Pour l'instant, une seule carte est connue.
+        Les informations détaillées et la collection complète
+        seront ajoutées plus tard.
+      </p>
+
+      <span class="piggy-note">✨ Plus d'informations à venir</span>
     </section>
+
   </main>
 
   <footer>
-    <p><span>💜 DeltaCard List</span> — Un univers, plusieurs collections.</p>
-    <p>Site de collection personnel créé par un fan.</p>
+    <p><span>💜 LKB Card List</span> — Un univers, plusieurs collections.</p>
+    <p>Site personnel de collection créé par un fan.</p>
   </footer>
+
 </body>
 </html>

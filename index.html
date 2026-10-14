@@ -4,37 +4,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0d0815">
-  <title>LKB Card List</title>
-  <link rel="icon" href="logo.png">
+  <meta name="theme-color" content="#160d20">
+  <meta name="description" content="Découvre LKB Card List, les collections DeltaCard et PiggyCard, et complète tes collections de cartes.">
+
+  <title>LKB Card List 💜</title>
 
   <style>
+    :root {
+      --background: #100a16;
+      --panel: #1c1228;
+      --panel-light: #251733;
+      --purple: #b879ff;
+      --purple-light: #dfbaff;
+      --purple-border: #70409a;
+      --text: #f4eaff;
+      --muted: #cdbbdc;
+      --gold: #f5d37d;
+      --pink: #ffafd2;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    :root {
-      --background: #0d0815;
-      --panel: #191025;
-      --purple: #a855f7;
-      --light-purple: #d8b4fe;
-      --text: #f7f0ff;
-      --muted: #b9acc9;
-    }
-
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 100px;
     }
 
     body {
-      min-height: 100vh;
-      color: var(--text);
       background:
-        radial-gradient(ellipse at 50% 0%, #32154e 0%, transparent 48%),
+        radial-gradient(ellipse at top, #301744 0%, transparent 45%),
         var(--background);
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
     }
 
     a {
@@ -42,107 +48,146 @@
       text-decoration: none;
     }
 
+    img {
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
     /* NAVIGATION */
 
-    nav {
+    .navbar {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 15px;
-      padding: 18px 7%;
-      background: rgba(13, 8, 21, 0.92);
-      border-bottom: 1px solid #39234c;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 5%;
+      background: rgba(16, 10, 22, 0.92);
+      border-bottom: 1px solid #70409a55;
       backdrop-filter: blur(14px);
     }
 
     .logo {
-      font-size: 1.2rem;
+      color: var(--purple-light);
+      font-size: 1.3rem;
       font-weight: 900;
-      letter-spacing: 1px;
+      white-space: nowrap;
     }
 
-    .logo span {
-      color: var(--light-purple);
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 22px;
     }
 
-    .nav-link {
+    .nav-links a {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
     }
 
-    .nav-link:hover {
-      color: white;
+    .nav-links a:hover {
+      color: var(--purple-light);
+    }
+
+    /* CONTENU GÉNÉRAL */
+
+    main {
+      width: min(1400px, 94%);
+      margin: auto;
+    }
+
+    .section {
+      padding: 65px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--purple);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 10px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+    }
+
+    .section-heading p {
+      color: var(--muted);
     }
 
     /* ACCUEIL */
 
     .hero {
+      display: flex;
+      min-height: 390px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 65px 20px;
       text-align: center;
-      padding: 85px 20px 60px;
     }
 
-    .eyebrow {
+    .hero-badge {
       display: inline-block;
-      padding: 8px 14px;
       margin-bottom: 22px;
-      color: var(--light-purple);
-      background: #251435;
-      border: 1px solid #5f3581;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
+      padding: 7px 15px;
+      color: var(--purple-light);
+      background: #9b59d51c;
+      border: 1px solid #9b59d566;
+      border-radius: 50px;
+      font-size: 0.85rem;
     }
 
-    h1 {
-      font-size: clamp(2.7rem, 8vw, 5.2rem);
-      line-height: 1.1;
-      letter-spacing: -2px;
+    .hero h1 {
+      max-width: 900px;
       margin-bottom: 20px;
-    }
-
-    h1 span {
-      color: var(--light-purple);
-      text-shadow: 0 0 30px #a855f766;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      line-height: 1.1;
+      background: linear-gradient(90deg, #ffffff, #d7a5ff, #a55bff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero p {
-      max-width: 650px;
-      margin: 0 auto;
+      max-width: 700px;
+      margin-bottom: 28px;
       color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.8;
+      font-size: 1.1rem;
     }
 
-    .scroll-hint {
-      margin-top: 32px;
-      color: #a58bbd;
-      font-size: 0.9rem;
+    .primary-button {
+      display: inline-block;
+      padding: 13px 23px;
+      color: #1a0c24;
+      background: linear-gradient(110deg, #e1b8ff, #ae72ff);
+      border-radius: 12px;
+      font-weight: 800;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px #b879ff55;
     }
 
     /* COLLECTIONS */
-
-    .collections {
-      width: min(1100px, 90%);
-      margin: 0 auto;
-      padding: 20px 0 75px;
-    }
-
-    .section-heading {
-      margin-bottom: 28px;
-    }
-
-    .section-heading h2 {
-      font-size: 1.8rem;
-      margin-bottom: 9px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
 
     .collection-grid {
       display: grid;
@@ -152,288 +197,344 @@
 
     .collection-card {
       display: flex;
+      min-height: 270px;
       flex-direction: column;
-      min-width: 0;
+      align-items: flex-start;
       padding: 30px;
-      overflow: hidden;
-      background: linear-gradient(145deg, #21132f, #120c1c 75%);
-      border: 1px solid #49305e;
-      border-radius: 24px;
-      transition: transform 0.25s, box-shadow 0.25s;
+      background: linear-gradient(135deg, #261535, #170f20);
+      border: 1px solid var(--purple-border);
+      border-radius: 23px;
+      transition: transform 0.2s, border-color 0.2s;
     }
 
     .collection-card:hover {
       transform: translateY(-5px);
-    }
-
-    .delta-card:hover {
-      border-color: #b875ff;
-      box-shadow: 0 12px 45px #9b4dff20;
-    }
-
-    .piggy-card:hover {
-      border-color: #ff9bc9;
-      box-shadow: 0 12px 45px #ff80bb18;
-    }
-
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 25px;
+      border-color: var(--purple);
     }
 
     .collection-icon {
-      display: grid;
-      place-items: center;
-      width: 62px;
-      height: 62px;
-      flex-shrink: 0;
-      border-radius: 18px;
-      font-size: 2rem;
-      background: #39204e;
-      border: 1px solid #69408a;
-    }
-
-    .piggy-card .collection-icon {
-      background: #402034;
-      border-color: #79415d;
-    }
-
-    .status {
-      padding: 7px 10px;
-      border-radius: 20px;
-      font-size: 0.72rem;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .available {
-      color: #dfc4ff;
-      background: #42245b;
-    }
-
-    .coming {
-      color: #ffc3df;
-      background: #49253b;
+      margin-bottom: 15px;
+      font-size: 2.6rem;
     }
 
     .collection-card h3 {
-      font-size: 2rem;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      color: var(--purple-light);
+      font-size: 1.65rem;
     }
 
-    .description {
+    .collection-card p {
+      margin-bottom: 20px;
       color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 25px;
     }
 
-    .stats {
+    .collection-meta {
+      margin-top: auto;
+      margin-bottom: 20px;
+      color: #d9c5ed;
+      font-size: 0.88rem;
+    }
+
+    .collection-link {
+      display: inline-block;
+      padding: 10px 16px;
+      color: var(--purple-light);
+      border: 1px solid var(--purple-border);
+      border-radius: 10px;
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+
+    .collection-link:hover {
+      background: #a855f722;
+    }
+
+    .piggy-card {
+      border-color: #79415d;
+    }
+
+    .piggy-card h3 {
+      color: var(--pink);
+    }
+
+    .piggy-card .collection-link {
+      color: var(--pink);
+      border-color: #79415d;
+    }
+
+    /* INFORMATIONS : GRANDS ARTICLES */
+
+    .info-article {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin: 0 0 28px;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 35%);
+      align-items: center;
+      gap: 35px;
+      margin-bottom: 25px;
+      padding: 35px;
+      overflow: hidden;
+      background: linear-gradient(110deg, #21152e, #160e20);
+      border: 1px solid var(--purple-border);
+      border-radius: 27px;
+      box-shadow: inset 0 0 30px #a855f708;
     }
 
-    .stat {
-      padding: 14px 6px;
-      text-align: center;
-      background: #0f0918;
-      border: 1px solid #30203f;
-      border-radius: 12px;
-      overflow-wrap: anywhere;
+    .info-content {
+      min-width: 0;
     }
 
-    .stat strong {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 6px;
+    .info-article h3 {
+      margin-bottom: 28px;
+      color: var(--purple-light);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.4;
     }
 
-    .stat span {
-      color: var(--muted);
-      font-size: 0.72rem;
+    .info-article p {
+      margin-bottom: 10px;
+      color: #d3c4e3;
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      line-height: 1.9;
     }
 
-    .delta-card .stat strong {
-      color: var(--light-purple);
+    .info-article .info-emphasis {
+      margin-top: 28px;
+      margin-bottom: 0;
+      font-weight: 800;
     }
 
-    .piggy-card .stat strong {
-      color: #ffafd2;
+    .article-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--purple);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
     }
 
-    .card-button {
+    .article-image {
       display: block;
       width: 100%;
-      margin-top: auto;
-      padding: 15px 18px;
+      height: 255px;
+      object-fit: cover;
+      border-radius: 19px;
+      background: #100a18;
+    }
+
+    .rare-article {
+      border-color: #8b6a2d;
+    }
+
+    .rare-article h3 {
+      color: var(--gold);
+    }
+
+    .rare-article .article-tag {
+      color: var(--gold);
+    }
+
+    .secret-article {
+      border-color: #8248bd;
+      box-shadow: inset 0 0 35px #9333ea10;
+    }
+
+    .piggy-article {
+      grid-template-columns: 1fr;
+      border-color: #79415d;
+    }
+
+    .piggy-article h3,
+    .piggy-article .article-tag {
+      color: var(--pink);
+    }
+
+    /* PETITS APERÇUS DE CARTES */
+
+    .mini-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+      align-self: center;
+      width: 100%;
+    }
+
+    .mini-card {
+      min-width: 0;
+      padding: 10px;
       text-align: center;
-      font-size: 0.95rem;
-      font-weight: bold;
-      border-radius: 12px;
-      transition: filter 0.2s, transform 0.2s;
+      background: #0f0a17;
+      border: 1px solid #70409a66;
+      border-radius: 13px;
     }
 
-    .card-button:hover {
-      filter: brightness(1.15);
-      transform: translateY(-2px);
+    .rare-images .mini-card {
+      border-color: #b38a3f77;
     }
 
-    .delta-button {
-      color: white;
-      background: linear-gradient(100deg, #7c3aed, #a855f7);
-      box-shadow: 0 5px 20px #9333ea30;
+    .secret-images .mini-card {
+      border-color: #8248bd88;
     }
 
-    .piggy-button {
-      color: #ffe5f1;
-      background: #392033;
-      border: 1px solid #75435d;
+    .mini-card img {
+      display: block;
+      width: 100%;
+      height: 145px;
+      object-fit: contain;
+      border-radius: 7px;
     }
 
-    /* RARETÉS */
-
-    .rarities {
-      width: min(1100px, 90%);
-      margin: 0 auto 75px;
-      padding: 35px;
-      background: #15101e;
-      border: 1px solid #30213e;
-      border-radius: 22px;
-    }
-
-    .rarities h2 {
-      margin-bottom: 10px;
-    }
-
-    .rarities > p {
+    .mini-card p {
+      margin: 8px 0 0;
       color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 25px;
+      font-size: 0.82rem;
+      line-height: 1.4;
     }
+
+    /* RÉCAPITULATIF */
 
     .rarity-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      gap: 18px;
     }
 
-    .rarity {
-      padding: 20px;
-      border-radius: 15px;
-      background: #100b17;
-      border: 1px solid #352640;
+    .rarity-card {
+      padding: 25px 15px;
+      text-align: center;
+      background: var(--panel);
+      border: 1px solid #70409a66;
+      border-radius: 17px;
     }
 
-    .rarity h3 {
+    .rarity-card .rarity-icon {
+      display: block;
       margin-bottom: 8px;
+      font-size: 2rem;
     }
 
-    .rarity p {
+    .rarity-card h3 {
+      margin-bottom: 5px;
+    }
+
+    .rarity-card p {
       color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.7;
+      font-size: 0.9rem;
     }
 
-    .common h3 {
-      color: #d7d0e0;
+    .rarity-common h3 {
+      color: #e5e0ed;
     }
 
-    .rare {
-      border-color: #8b6a2d;
+    .rarity-rare h3 {
+      color: var(--gold);
     }
 
-    .rare h3 {
-      color: #f5d37d;
-    }
-
-    .secret {
-      border-color: #7041a0;
-      box-shadow: inset 0 0 20px #9333ea0c;
-    }
-
-    .secret h3 {
-      color: #d7a5ff;
-    }
-
-    /* PIGGYCARD */
-
-    .piggy-info {
-      width: min(1100px, 90%);
-      margin: 0 auto 80px;
-      padding: 30px;
-      background: linear-gradient(135deg, #241426, #15101e);
-      border: 1px solid #61344e;
-      border-radius: 22px;
-    }
-
-    .piggy-info h2 {
-      color: #ffafd2;
-      margin-bottom: 12px;
-    }
-
-    .piggy-info p {
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .piggy-note {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 9px 13px;
-      color: #ffc3df;
-      background: #49253b;
-      border-radius: 10px;
-      font-size: 0.85rem;
+    .rarity-secret h3 {
+      color: #d4a2ff;
     }
 
     /* PIED DE PAGE */
 
     footer {
-      padding: 30px 20px;
+      margin-top: 30px;
+      padding: 30px 5%;
       text-align: center;
-      border-top: 1px solid #30213e;
-      color: #9888a8;
-      font-size: 0.85rem;
-      line-height: 1.9;
+      background: #0b0710;
+      border-top: 1px solid #70409a55;
     }
 
-    footer span {
-      color: var(--light-purple);
+    footer p {
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
-    @media (max-width: 700px) {
-      nav {
-        padding: 16px 5%;
+    footer .footer-logo {
+      margin-bottom: 8px;
+      color: var(--purple-light);
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
       }
 
-      .logo {
-        font-size: 0.95rem;
+      .nav-links {
+        justify-content: center;
+        gap: 16px;
       }
 
-      .hero {
-        padding-top: 65px;
-      }
-
-      .collection-grid,
-      .rarity-grid {
+      .collection-grid {
         grid-template-columns: 1fr;
       }
 
-      .collection-card {
-        padding: 23px;
+      .info-article {
+        grid-template-columns: 1fr;
+        gap: 23px;
+        padding: 25px;
       }
 
-      .rarities,
-      .piggy-info {
-        padding: 23px;
+      .info-article h3 {
+        margin-bottom: 20px;
       }
 
-      .collection-card h3 {
-        font-size: 1.7rem;
+      .article-image {
+        height: 230px;
+      }
+
+      .mini-cards {
+        max-width: 460px;
+      }
+
+      .mini-card img {
+        height: 160px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main {
+        width: 92%;
+      }
+
+      .section {
+        padding: 42px 0;
+      }
+
+      .hero {
+        min-height: 330px;
+        padding: 45px 5px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+
+      .info-article {
+        padding: 19px;
+        border-radius: 19px;
+      }
+
+      .article-image {
+        height: 190px;
+      }
+
+      .mini-card {
+        padding: 7px;
+      }
+
+      .mini-card img {
+        height: 125px;
+      }
+
+      .rarity-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -441,177 +542,325 @@
 
 <body>
 
-  <nav>
-    <a class="logo" href="index.html">💜 LKB <span>CARD LIST</span></a>
-    <a class="nav-link" href="#collections">Mes collections ↓</a>
-  </nav>
+  <!-- NAVIGATION -->
 
-  <header class="hero">
-    <div class="eyebrow">✦ Ton univers de cartes ✦</div>
+  <header class="navbar">
+    <a class="logo" href="#accueil">💜 LKB CARD LIST</a>
 
-    <h1>Bienvenue sur<br><span>LKB Card List</span></h1>
-
-    <p>
-      Découvre tes collections de cartes, explore les différentes raretés
-      et suis tes trouvailles dans un univers rempli de surprises.
-    </p>
-
-    <div class="scroll-hint">
-      ↓ Choisis ta collection pour commencer ↓
-    </div>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a>
+      <a href="#collections">Collections</a>
+      <a href="#infos">Informations</a>
+      <a href="#raret es">Raretés</a>
+    </nav>
   </header>
 
   <main>
 
-    <section class="collections" id="collections">
+    <!-- ACCUEIL -->
+
+    <section class="hero" id="accueil">
+      <span class="hero-badge">✨ TON UNIVERS DE CARTES</span>
+
+      <h1>LKB Card List</h1>
+
+      <p>
+        Bienvenue dans ton espace de collection !
+        Découvre les cartes, explore les séries et complète
+        tes collections DeltaCard et PiggyCard.
+      </p>
+
+      <a class="primary-button" href="#collections">
+        Découvrir les collections ↓
+      </a>
+    </section>
+
+    <!-- COLLECTIONS -->
+
+    <section class="section" id="collections">
       <div class="section-heading">
-        <h2>✨ Choisis ton univers</h2>
-        <p>
-          Chaque collection a son propre univers.
-          Laquelle vas-tu explorer ?
-        </p>
+        <span class="section-label">🃏 LES UNIVERS</span>
+        <h2>Mes Collections</h2>
+        <p>Choisis une collection pour découvrir ses cartes.</p>
       </div>
 
       <div class="collection-grid">
 
-        <!-- COLLECTION DELTACARD -->
-
-        <article class="collection-card delta-card">
-          <div class="card-top">
-            <div class="collection-icon">💎</div>
-            <span class="status available">● Disponible</span>
-          </div>
-
+        <article class="collection-card">
+          <span class="collection-icon">💜</span>
           <h3>DeltaCard</h3>
 
-          <p class="description">
-            Entre dans l'univers DeltaCard ! Découvre les cartes communes,
-            les cartes rares et les cartes secrètes. Coche celles que tu
-            possèdes et suis ta collection au fil de tes découvertes.
+          <p>
+            Découvre la première série DeltaCard avec ses cartes
+            communes, rares et secrètes.
           </p>
 
-          <div class="stats">
-            <div class="stat">
-              <strong>4</strong>
-              <span>Communes</span>
-            </div>
-
-            <div class="stat">
-              <strong>3</strong>
-              <span>Rares</span>
-            </div>
-
-            <div class="stat">
-              <strong>3</strong>
-              <span>Secrètes</span>
-            </div>
+          <div class="collection-meta">
+            ⚪ 4 communes · 💛 3 rares · 🔮 3 secrètes
           </div>
 
-          <a class="card-button delta-button" href="deltacard.html">
-            💎 Découvrir DeltaCard →
+          <a class="collection-link" href="deltacard.html">
+            Voir la collection →
           </a>
         </article>
 
-        <!-- COLLECTION PIGGYCARD -->
-
         <article class="collection-card piggy-card">
-          <div class="card-top">
-            <div class="collection-icon">🐷</div>
-            <span class="status coming">✦ En préparation</span>
-          </div>
-
+          <span class="collection-icon">🐷</span>
           <h3>PiggyCard</h3>
 
-          <p class="description">
-            Découvre l'univers PiggyCard ! La collection commence
-            avec une première carte. Sa page complète et ses
-            fonctionnalités arriveront plus tard.
+          <p>
+            Une deuxième collection arrive dans LKB Card List.
+            Sa présentation sera complétée prochainement.
           </p>
 
-          <div class="stats">
-            <div class="stat">
-              <strong>1</strong>
-              <span>Carte connue</span>
-            </div>
-
-            <div class="stat">
-              <strong>À venir</strong>
-              <span>Collection</span>
-            </div>
-
-            <div class="stat">
-              <strong>🐽</strong>
-              <span>Univers Piggy</span>
-            </div>
+          <div class="collection-meta">
+            🃏 1 carte connue · Collection en préparation
           </div>
 
-          <a class="card-button piggy-button" href="#piggy-info">
-            🐷 En savoir plus ↓
+          <a class="collection-link" href="#piggy-info">
+            En savoir plus →
           </a>
         </article>
 
       </div>
     </section>
 
-    <!-- INFORMATIONS SUR LES RARETÉS -->
+    <!-- INFORMATIONS -->
 
-    <section class="rarities">
-      <h2>🌟 Les raretés DeltaCard</h2>
+    <section class="section" id="infos">
 
-      <p>
-        Chaque niveau de rareté apporte son propre style.
-        Retrouve ces catégories dans ta collection DeltaCard.
-      </p>
+      <div class="section-heading">
+        <span class="section-label">📚 ACTUALITÉS ET INFORMATIONS</span>
+        <h2>Les Informations</h2>
+        <p>
+          Les nouveautés, les séries et les détails de tes collections.
+        </p>
+      </div>
+
+      <!-- PREMIÈRE SÉRIE -->
+
+      <article class="info-article">
+        <div class="info-content">
+          <span class="article-tag">✨ NOUVEAUTÉ · DELTACARD</span>
+
+          <h3>✨ Le Début de la Première Série !</h3>
+
+          <p>
+            La première série de DeltaCards est arrivée !
+            Découvre les cartes de Kris, Jevil, Ralsei et bien d'autres.
+          </p>
+
+          <p>
+            Certaines sont communes, d'autres rares, et les plus
+            difficiles à trouver sont les secrètes.
+          </p>
+
+          <p class="info-emphasis">
+            À toi de compléter la collection ! 💜
+          </p>
+        </div>
+
+        <img
+          class="article-image"
+          src="premiere-serie.png"
+          alt="Présentation de la première série DeltaCard"
+          loading="lazy"
+        >
+      </article>
+
+      <!-- CARTES COMMUNES -->
+
+      <article class="info-article">
+        <div class="info-content">
+          <span class="article-tag">⚪ DELTACARD · COMMUNES</span>
+
+          <h3>⚪ Les Cartes Communes !</h3>
+
+          <p>
+            Commence ta collection avec les quatre cartes communes
+            de la première série DeltaCard.
+          </p>
+
+          <p>
+            Découvre les cartes et vérifie ta collection sur la page
+            dédiée à DeltaCard.
+          </p>
+
+          <p class="info-emphasis">
+            Quatre cartes à collectionner ! 🃏
+          </p>
+        </div>
+
+        <div class="mini-cards">
+          <div class="mini-card">
+            <img src="Delta1.png" alt="Carte commune 1" loading="lazy">
+            <p>Commune 1</p>
+          </div>
+
+          <div class="mini-card">
+            <img src="Delta2.png" alt="Carte commune 2" loading="lazy">
+            <p>Commune 2</p>
+          </div>
+
+          <div class="mini-card">
+            <img src="Delta3.png" alt="Carte commune 3" loading="lazy">
+            <p>Commune 3</p>
+          </div>
+
+          <div class="mini-card">
+            <img src="Delta4.png" alt="Carte commune 4" loading="lazy">
+            <p>Commune 4</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARTES RARES -->
+
+      <article class="info-article rare-article">
+        <div class="info-content">
+          <span class="article-tag">💛 DELTACARD · RARES</span>
+
+          <h3>💛 Les Cartes Rares !</h3>
+
+          <p>
+            Les cartes rares se distinguent par leur niveau de rareté
+            et leur apparence spéciale.
+          </p>
+
+          <p>
+            Trois cartes rares sont présentes dans cette première série.
+          </p>
+
+          <p class="info-emphasis">
+            Réussiras-tu à toutes les obtenir ? ✨
+          </p>
+        </div>
+
+        <div class="mini-cards rare-images">
+          <div class="mini-card">
+            <img src="Rare1.png" alt="Carte rare 1" loading="lazy">
+            <p>Rare 1</p>
+          </div>
+
+          <div class="mini-card">
+            <img src="Rare2.png" alt="Carte rare 2" loading="lazy">
+            <p>Rare 2</p>
+          </div>
+
+          <div class="mini-card">
+            <img src="Rare3.png" alt="Carte rare 3" loading="lazy">
+            <p>Rare 3</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARTES SECRÈTES -->
+
+      <article class="info-article secret-article">
+        <div class="info-content">
+          <span class="article-tag">🔮 DELTACARD · SECRÈTES</span>
+
+          <h3>🔮 Les Cartes Secrètes !</h3>
+
+          <p>
+            Les cartes secrètes sont les cartes les plus difficiles
+            à trouver dans cette première série.
+          </p>
+
+          <p>
+            Elles apportent une touche mystérieuse à la collection
+            et représentent un défi supplémentaire.
+          </p>
+
+          <p class="info-emphasis">
+            Trois cartes secrètes t'attendent ! 💜
+          </p>
+        </div>
+
+        <div class="mini-cards secret-images">
+          <div class="mini-card">
+            <img src="Secret1.png" alt="Carte secrète 1" loading="lazy">
+            <p>Secrète 1</p>
+          </div>
+
+          <div class="mini-card">
+            <img src="Secret2.png" alt="Carte secrète 2" loading="lazy">
+            <p>Secrète 2</p>
+          </div>
+
+          <div class="mini-card">
+            <img src="Secret3.png" alt="Carte secrète 3" loading="lazy">
+            <p>Secrète 3</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- PIGGYCARD SANS IMAGE -->
+
+      <article class="info-article piggy-article" id="piggy-info">
+        <div class="info-content">
+          <span class="article-tag">🐷 PIGGYCARD · À VENIR</span>
+
+          <h3>🐷 Une Nouvelle Collection à Découvrir !</h3>
+
+          <p>
+            PiggyCard est le deuxième univers de LKB Card List.
+            Pour le moment, une seule carte est connue.
+          </p>
+
+          <p>
+            Cette partie sera complétée lorsque la collection
+            sera prête à être présentée.
+          </p>
+
+          <p class="info-emphasis">
+            L'aventure PiggyCard ne fait que commencer ! 🐷💗
+          </p>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- RARETÉS -->
+
+    <section class="section" id="raretes">
+      <div class="section-heading">
+        <span class="section-label">✨ GUIDE DE COLLECTION</span>
+        <h2>Les Niveaux de Rareté</h2>
+        <p>Retrouve les trois catégories de la première série DeltaCard.</p>
+      </div>
 
       <div class="rarity-grid">
 
-        <div class="rarity common">
-          <h3>⚪ Communes</h3>
-          <p>
-            Les cartes de base pour commencer
-            et compléter ta collection.
-          </p>
-        </div>
+        <article class="rarity-card rarity-common">
+          <span class="rarity-icon">⚪</span>
+          <h3>Communes</h3>
+          <p>4 cartes dans la série</p>
+        </article>
 
-        <div class="rarity rare">
-          <h3>💛 Rares</h3>
-          <p>
-            Des cartes mises en valeur avec
-            un style doré.
-          </p>
-        </div>
+        <article class="rarity-card rarity-rare">
+          <span class="rarity-icon">💛</span>
+          <h3>Rares</h3>
+          <p>3 cartes dans la série</p>
+        </article>
 
-        <div class="rarity secret">
-          <h3>🔮 Secrètes</h3>
-          <p>
-            Des cartes mystérieuses avec
-            une ambiance violette lumineuse.
-          </p>
-        </div>
+        <article class="rarity-card rarity-secret">
+          <span class="rarity-icon">🔮</span>
+          <h3>Secrètes</h3>
+          <p>3 cartes dans la série</p>
+        </article>
 
       </div>
-    </section>
-
-    <!-- INFORMATIONS PIGGYCARD -->
-
-    <section class="piggy-info" id="piggy-info">
-      <h2>🐷 L'univers PiggyCard</h2>
-
-      <p>
-        PiggyCard est une collection en préparation.
-        Pour l'instant, une seule carte est connue.
-        Les informations détaillées et la collection complète
-        seront ajoutées plus tard.
-      </p>
-
-      <span class="piggy-note">✨ Plus d'informations à venir</span>
     </section>
 
   </main>
 
+  <!-- PIED DE PAGE -->
+
   <footer>
-    <p><span>💜 LKB Card List</span> — Un univers, plusieurs collections.</p>
-    <p>Site personnel de collection créé par un fan.</p>
+    <p class="footer-logo">💜 LKB CARD LIST</p>
+    <p>Un univers de cartes à découvrir et à collectionner.</p>
+    <p>Projet de collection fan-made · Fait avec passion 💜</p>
   </footer>
 
 </body>
